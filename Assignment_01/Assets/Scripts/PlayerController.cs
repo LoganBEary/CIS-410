@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
+    private int spacebarPresses = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
 
@@ -54,7 +55,8 @@ public class PlayerController : MonoBehaviour
 
       if(Keyboard.current.spaceKey.wasPressedThisFrame)
       {
-        if(isGrounded || maxJump > currJump)
+        spacebarPresses++;
+        if(isGrounded || maxJump > spacebarPresses)
         {
             rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
             isGrounded = false;
@@ -81,6 +83,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay() {
       isGrounded = true;
-      currJump = 0;
+      spacebarPresses = 0;
     }
 }
