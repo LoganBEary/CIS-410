@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public float jumpingForce = 9.0f;
 
     public bool isGrounded = true;
-    private int currJump = 0;
     private int maxJump = 2;
 
 
